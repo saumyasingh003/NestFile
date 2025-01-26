@@ -101,7 +101,7 @@ const MobileNavigation = ({
           <SheetTitle>
             <div className="header-user flex items-center gap-3 p-4 rounded-lg mb-4">
               <Image
-                src="/assets/avatar"
+                src="/assets/avatar2.png"
                 alt="avatar"
                 width={44}
                 height={44}
