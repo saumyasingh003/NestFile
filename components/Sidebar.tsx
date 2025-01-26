@@ -80,7 +80,7 @@ const Sidebar = ({ fullName, avatar, email }: Props) => {
       {/* User Info */}
       <div className="absolute bottom-0 left-0 w-full flex    p-4 ">
   <Image
-    src="/assets/avatar"
+    src="/assets/avatar2.png"
     alt="Avatar"
     width={44}
     height={44}
