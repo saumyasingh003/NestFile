@@ -72,45 +72,45 @@ const Dashboard = async () => {
         </section>
 
         {/* Recent Files Section */}
-        <section className="flex-none w-[400px] ml-auto space-y-6">
-          <h2 className="text-2xl font-bold text-gray-800">Recent Files</h2>
-          {files.documents.length > 0 ? (
-            <ul className="flex flex-col gap-6">
-              {files.documents.map((file: Models.Document) => (
-                <Link
-                  href={file.url}
-                  target="_blank"
-                  className="flex items-center gap-6 p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
-                  key={file.$id}
-                >
-                  <Thumbnail
-                    type={file.type}
-                    extension={file.extension}
-                    url={file.url}
-                    className="w-12 h-12 rounded-md object-cover"
-                  />
+        <section className="flex-none w-full max-w-[400px] ml-auto space-y-6 sm:w-[350px] md:w-[400px]">
+  <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Recent Files</h2>
+  {files.documents.length > 0 ? (
+    <ul className="flex flex-col gap-4 sm:gap-6">
+      {files.documents.map((file: Models.Document) => (
+        <Link
+          href={file.url}
+          target="_blank"
+          className="flex items-center gap-4 sm:gap-6 p-3 sm:p-4 bg-white shadow-md rounded-lg hover:shadow-lg transition-shadow duration-300"
+          key={file.$id}
+        >
+          <Thumbnail
+            type={file.type}
+            extension={file.extension}
+            url={file.url}
+            className="w-10 h-10 sm:w-12 sm:h-12 rounded-md object-cover"
+          />
+          <div className="flex justify-between items-center w-full">
+            <div className="flex flex-col">
+              <p className="text-black text-sm truncate">
+                {file.name.length > 10
+                  ? `${file.name.substring(0, 25)}...`
+                  : file.name}
+              </p>
+              <FormattedDateTime
+                date={file.$createdAt}
+                className="text-sm text-gray-500"
+              />
+            </div>
+            <ActionDropdown file={file} />
+          </div>
+        </Link>
+      ))}
+    </ul>
+  ) : (
+    <p className="text-gray-500 text-center">No files uploaded</p>
+  )}
+</section>
 
-                  <div className="flex justify-between items-center w-full">
-                    <div className="flex flex-col">
-                      <p className="text-black text-sm truncate">
-                        {file.name.length > 10
-                          ? `${file.name.substring(0, 25)}...`
-                          : file.name}
-                      </p>
-                      <FormattedDateTime
-                        date={file.$createdAt}
-                        className="text-sm text-gray-500"
-                      />
-                    </div>
-                    <ActionDropdown file={file} />
-                  </div>
-                </Link>
-              ))}
-            </ul>
-          ) : (
-            <p className="text-gray-500 text-center">No files uploaded</p>
-          )}
-        </section>
       </div>
     </div>
   );
